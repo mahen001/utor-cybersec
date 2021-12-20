@@ -1,0 +1,3 @@
+hosts file : added vms vm1;vm2 and elk ip addresses.
+ansible.cfg : updated remote user : sysadmin
+my-playbook.yml--to create first YAML file
