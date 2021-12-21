@@ -1,13 +1,11 @@
-<<<<<<< HEAD
 =======
 # utor-cybersec
 Cybersecurity Projects
->>>>>>> 9711083d8f35dd76e443ade1e19b74e10eaa9579
 ## Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
 
-![](Diagrams/Network Diagram Project1.png)
+![](Diagrams/Network_Diagram_Project1.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _configuration_ file may be used to install only certain pieces of it, such as Filebeat.
 
@@ -70,11 +68,10 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-<<<<<<< HEAD
+
 -What is the main advantage of automating configuration with Ansible?_
 =======
 - _TODO: What is the main advantage of automating configuration with Ansible?_
->>>>>>> 9711083d8f35dd76e443ade1e19b74e10eaa9579
 
 The playbook implements the following tasks:
 - _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
@@ -84,7 +81,7 @@ The playbook implements the following tasks:
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 <<<<<<< HEAD
-[Diagrams/docker_ps_output.png]
+![](Diagrams/docker_ps_output.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -95,16 +92,7 @@ We have installed the following Beats on these machines:
 - Filebeat
   Metricbeat
 =======
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
 
-### Target Machines & Beats
-This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
-
-We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_ metricbeat-7.4.0-amd64.deb
-
->>>>>>> 9711083d8f35dd76e443ade1e19b74e10eaa9579
 These Beats allow us to collect the following information from each machine:
 - _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
 
@@ -139,7 +127,7 @@ setup.kibana:
 - Copy the _____ file to _____.
 - Update the _____ file to include...
 - Run the playbook, and navigate to ____ to check that the installation worked as expected.
->>>>>>> 9711083d8f35dd76e443ade1e19b74e10eaa9579
+
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
@@ -147,7 +135,6 @@ _TODO: Answer the following questions to fill in the blanks:_
 - _Which URL do you navigate to in order to check that the ELK server is running? http://public ip elk server:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
-<<<<<<< HEAD
 
 =======
->>>>>>> 9711083d8f35dd76e443ade1e19b74e10eaa9579
+
