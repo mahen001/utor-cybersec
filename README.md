@@ -178,35 +178,35 @@ Using the configuration file template for filebeat and metricbeat to download th
  nano metricbeat-playbook.yml
 
 ---
-- name: Install metric beat
-  hosts: webservers
-  become: true
-  tasks:
+- name: installing and launching metricbeat
+           hosts: webservers
+      become: true
+      tasks:
     
-  - name: Download metricbeat
-    command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.4.0-amd64.deb
+          - name: Download metricbeat
+            command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.4.0-amd64.deb
   
-  - name: install metricbeat
-    command: dpkg -i metricbeat-7.4.0-amd64.deb
+          - name: install metricbeat
+            command: dpkg -i metricbeat-7.4.0-amd64.deb
 
-  - name: drop in metricbeat config
-    copy:
-      src: /etc/ansible/files/metricbeat-config.yml
-      dest: /etc/metricbeat/metricbeat.yml
+          - name: drop in metricbeat config
+            copy:
+            src: /etc/ansible/files/metricbeat-config.yml
+            dest: /etc/metricbeat/metricbeat.yml
 
-  - name: enable and configure docker module for metric beat
-    command: metricbeat modules enable docker
+          - name: enable and configure docker module for metric beat
+            command: metricbeat modules enable docker
 
-     - name: setup metric beat
-    command: metricbeat setup
+          - name: setup metric beat
+            command: metricbeat setup
 
-      - name: start metric beat
-    command: service metricbeat start
+          - name: start metric beat
+            command: service metricbeat start
 
-      - name: enable service metricbeat on boot
-    systemd:
-      name: metricbeat
-      enabled: yes
+          - name: enable service metricbeat on boot
+            systemd:
+            name: metricbeat
+            enabled: yes
 ---
    
    To run the metricbeat playbook from the command line in the ansible directory: ansible-playbook /etc/ansible/files/metricbeat-         playbook.ym
