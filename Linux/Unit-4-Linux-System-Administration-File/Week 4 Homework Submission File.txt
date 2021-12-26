@@ -161,18 +161,6 @@ Home Directory created for users
 sysadmin@UbuntuDesktop:/$ ls home
 adam  admin  amy  billy  http  instructor  jack  jane  joe  john  max  sally  sam  sara  student  sysadmin  user.hashes  vagrant
 
-Check for users in etc/shadow
-sam:$6$q6Q/VuiX$5xdspGUcvZy3Y4ARKik65sbwtu5FbX8C3gncFVR4hKJwd34H16C8nlHZEFTqccyvo0TFcNnwsAhQlyKfBBbQx.:18913:0:99999:7:::
-joe:$6$253k55JW$YDTk4wc7f2VK7By9IZQpij5B6r7U.GMXFG3JYeYNPw7ozzSAAAoSQfdak4a7erDRq/f512oTx5IMXbFHErmjB/:18913:0:99999:7:::
-amy:$6$WePTUnzc$b8kqwH4SZlAVwn/OoQExwNfmjCIDSe9GQIHcNBiiFXv6xLbc4.aaZ/wykpVk8c/4hctHvpvbKSMxjwXQgM4ON0:18913:0:99999:7:::
-sara:$6$4T1Dgup/$0loVpEjYiG0bMjagZDub6SJ1VRV3LMYv7UgSDzB1MCL2uK9k.ZYlb/eUxuKst/m6h3a1chh/PVqiTisOGsxeN1:18913:0:99999:7:::
-admin:$6$0jocPFlV$orCILl3u5xkr7vWT9TdpMzXVZnRXKHosD1GFC5Hu/QJK1vvBTQRUy5KFbbckWEPFaVnMulobUEqUJNhCsdHZy0:18913:0:99999:7:::
-
-Tested Hash for sam 
-sysadmin@UbuntuDesktop:/$ mkpasswd -m sha-512 -S q6Q/VuiX(salt) **********(password for sam).
-$6$q6Q/VuiX$5xdspGUcvZy3Y4ARKik65sbwtu5FbX8C3gncFVR4hKJwd34H16C8nlHZEFTqccyvo0TFcNnwsAhQlyKfBBbQx. (same as above in etc/shadow)
-PAM checks etc/shadow to verify if the password is the same and let sam log in.
-
 --------------------------------------------------------------------------------------------------------------------------------
 
 2. Ensure that only the `admin` has general sudo access.
