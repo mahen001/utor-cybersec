@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![](Diagrams/Network Diagram Project1.png)
+![](Diagrams/Network-Diagram-Project1.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _configuration_ file may be used to install only certain pieces of it, such as Filebeat.
 
@@ -123,7 +123,7 @@ setup.kibana:
   host: "10.2.0.4:5601"
 
 output.elasticsearch:
-  # Array of hosts to connect to.
+  Array of hosts to connect to.
   hosts: ["10.2.0.4:9200"]
   username: "elastic"
   password: "changeme"
@@ -146,7 +146,7 @@ Using the configuration file template for filebeat and metricbeat to download th
 
  nano filebeat-playbook.yml
 
-  ---
+---
  - name: installing and launching filebeat
 	   hosts: webservers
        become: true
@@ -177,7 +177,7 @@ Using the configuration file template for filebeat and metricbeat to download th
 
 -------Metricbeat-------
 
-nano metricbeat-playbook.yml
+ nano metricbeat-playbook.yml
 
 ---
   - name: installing and lunching metricbeat
