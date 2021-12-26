@@ -79,9 +79,7 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![](Images/docker_ps_output.png)
-![](Images/Web1_docker_ ps.PNG)
-![](Images/Web2_docker_ ps.PNG)
+![](Images/docker_ps_output.PNG)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -180,32 +178,42 @@ Using the configuration file template for filebeat and metricbeat to download th
  nano metricbeat-playbook.yml
 
 ---
-  - name: installing and lunching metricbeat
-    hosts: webservers
-    become: true
-    tasks:
-    
-  - name: download metricbeat deb
-    command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.7.1-amd64.deb
-    
-  - name: install metricbeat deb
-    command: sudo dpkg -i metricbeat-7.7.1-amd64.deb
-    
-  - name: drop in metricbeat.yml
+- name: Install metric beat
+  hosts: webservers
+  become: true
+  tasks:
+    # Use command module
+  - name: Download metricbeat
+    command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.4.0-amd64.deb
+
+    # Use command module
+  - name: install metricbeat
+    command: dpkg -i metricbeat-7.4.0-amd64.deb
+
+    # Use copy module
+  - name: drop in metricbeat config
     copy:
-      src: /etc/ansible/roles/files/metricbeat-configuration.yml
+      src: /etc/ansible/files/metricbeat-config.yml
       dest: /etc/metricbeat/metricbeat.yml
-      
-   - name: enable and configure system module
-     command: metricbeat modules enable system
-     
-   - name: setup metricbeat
-     command: metricbeat setup
-     
-   - name: start metricbeat service
-     command: service metricbeat start
-     
+
+    # Use command module
+  - name: enable and configure docker module for metric beat
+    command: metricbeat modules enable docker
+
+    # Use command module
+  - name: setup metric beat
+    command: metricbeat setup
+
+    # Use command module
+  - name: start metric beat
+    command: service metricbeat start
+
+    # Use systemd module
+  - name: enable service metricbeat on boot
+    systemd:
+      name: metricbeat
+      enabled: yes
+
  ---
    
-   To run the metricbeat playbook from the command line in the ansible directory: ansible-playbook /etc/ansible/files/metricbeat-         playbook.yml
-
+   To run the metricbeat playbook from the command line in the ansible directory: ansible-playbook /etc/ansible/files/metricbeat-         playbook.ym
