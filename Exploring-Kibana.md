@@ -1,16 +1,16 @@
-## Activity File: Exploring Kibana
+Activity File: Exploring Kibana
 
-* You are a DevOps professional and have set up monitoring for one of your web servers. You are collecting all sorts of web log data and it is your job to review the data regularly to make sure everything is running smoothly. 
+You are a DevOps professional and have set up monitoring for one of your web servers. You are collecting all sorts of web log data and it is your job to review the data regularly to make sure everything is running smoothly. 
 
-* Today, you notice something strange in the logs and you want to take a closer look.
+Today, you notice something strange in the logs and you want to take a closer look.
 
-* Your task: Explore the web server logs to see if there's anything unusual. Specifically, you will:
+Your task: Explore the web server logs to see if there's anything unusual. Specifically, you will:
 
 :warning: **Heads Up**: These sample logs are specific to the time you view them. As such, your answers will be different from the answers provided in the solution file. 
 
 ---
 
-### Instructions
+Instructions
 
 1. Add the sample web log data to Kibana.
 

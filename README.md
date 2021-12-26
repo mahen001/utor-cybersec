@@ -1,4 +1,4 @@
-## Automated ELK Stack Deployment
+Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
 
@@ -17,7 +17,7 @@ This document contains the following details:
 - How to Use the Ansible Build
 
 
-### Description of the Topology
+Description of the Topology
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
@@ -41,7 +41,7 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 | Load Balancer | Secure/Distribute traffic | 20.120.20.59 | Linux ubuntu 18.04 |
 | Workstation   | Access Control            | Public IP    | Windows 10         |
 
-### Access Policies
+Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
@@ -96,7 +96,7 @@ Filebeat : Filebeat will be used to collect log files from very specific files. 
 Metricbeat : Metricbeat collects machine metrics such as uptime. Use to monitor system-level CPU usage, memory, file system, disk IO, and network IO statistics.
 
 
-### Using the Playbook
+Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
@@ -182,38 +182,31 @@ Using the configuration file template for filebeat and metricbeat to download th
   hosts: webservers
   become: true
   tasks:
-    # Use command module
+    
   - name: Download metricbeat
     command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.4.0-amd64.deb
-
-    # Use command module
+  
   - name: install metricbeat
     command: dpkg -i metricbeat-7.4.0-amd64.deb
 
-    # Use copy module
   - name: drop in metricbeat config
     copy:
       src: /etc/ansible/files/metricbeat-config.yml
       dest: /etc/metricbeat/metricbeat.yml
 
-    # Use command module
   - name: enable and configure docker module for metric beat
     command: metricbeat modules enable docker
 
-    # Use command module
-  - name: setup metric beat
+     - name: setup metric beat
     command: metricbeat setup
 
-    # Use command module
-  - name: start metric beat
+      - name: start metric beat
     command: service metricbeat start
 
-    # Use systemd module
-  - name: enable service metricbeat on boot
+      - name: enable service metricbeat on boot
     systemd:
       name: metricbeat
       enabled: yes
-
- ---
+---
    
    To run the metricbeat playbook from the command line in the ansible directory: ansible-playbook /etc/ansible/files/metricbeat-         playbook.ym
