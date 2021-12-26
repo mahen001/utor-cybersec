@@ -1,10 +1,10 @@
 Activity File: Kibana Continued
 
-This week, you created the infrastructure behind a security information and event management system such as Kibana. Once that set up is complete, you will have finished the project. 
+- This week, you created the infrastructure behind a security information and event management system such as Kibana. Once that set up is complete, you will have finished the project. 
 
-This optional activity tasks you with exploring more Kibana capabilities, some of which you will use in future projects.  
+- This optional activity tasks you with exploring more Kibana capabilities, some of which you will use in future projects.  
 
-Note: In order to complete these activities, you will need to complete the optional Metricbeat configuration.
+- Note: In order to complete these activities, you will need to complete the optional Metricbeat configuration.
 
 
 Scenario 
@@ -87,7 +87,7 @@ SSH Barrage
 
 Task: Generate a high amount of failed SSH login attempts and verify that Kibana is picking up this activity.
 
-Activity File: SSH Barrage 
+Activity File: SSH Barrage
 
 Scenario
 
@@ -130,17 +130,20 @@ We can easily do this by trying to SSH to a web machine from our jump box direct
             sysadmin@JumpBoxProvisioner:~$ while true; do ssh sysadmin@10.0.0.6; done
 
 3. Search through the logs in Kibana to locate your generated failed login attempts.
+
 ![](Images/Kibana/Log-Auth.png)
 
 
 Bonus: Create a nested loop that generates SSH login attempts across all three of your VM's.
-
+       while true; do ssh sysadmin@10.0.0.6 10.0.0.7; done
 
 Linux Stress
 
 Task: Generate a high amount of CPU usage on the pentesting machines and verify that Kibana picks up this data.
 
+
 Activity File: Linux Stress 
+
 
 Scenario
 
@@ -149,11 +152,11 @@ Scenario
 - Before you hand over the server to the IR team, your senior architect has asked that you verify the ELK server is working as expected and pulling both logs and metrics from the pen-testing web servers.
 
 
-Your Task: Generate a high amount of CPU usage on the pentesting machines and verify that Kibana picks up this data.
+**Your Task**: Generate a high amount of CPU usage on the pentesting machines and verify that Kibana picks up this data.
 
 ---
 
-Notes
+#### Notes
 
 The Metrics page for a single VM shows the CPU usage for that machine. This shows how much work the machine is doing. Excessively high CPU usage is typically a cause for concern, as overworked computers are at greater risk for failure.
 
@@ -179,7 +182,8 @@ Instructions
 ![](Images/Kibana/web1-stress-cpu.PNG) 
 ![](Images/Kibana/web2-stress-cpu.PNG)                
 
-   Note: The stress program will run until you quit with Ctrl+C.
+  	- Note:The stress program will run until you quit with Ctrl+C.
+
 
 wget-DoS
 
@@ -187,7 +191,7 @@ wget-DoS
 Task: Generate a high amount of web requests to your pen-testing servers and make sure that Kibana is picking them up.
 
 
-Activity File: wget-DoS 
+Activity File: wget-DoS
 
 
 Scenario
@@ -196,11 +200,11 @@ Scenario
 
 - Before you hand over the server to the IR team, your senior architect has asked that you verify the ELK server is working as expected and pulling both logs and metrics from the pen-testing web servers.
 
-Your Task: Generate a high amount of web requests to your pen-testing servers and make sure that Kibana is picking them up.
+**Your Task**: Generate a high amount of web requests to your pen-testing servers and make sure that Kibana is picking them up.
 
 ---
 
-Instructions
+#### Instructions
 
 The Metrics section for a single VM will show Load and Network Traffic data. 
 
@@ -264,13 +268,17 @@ Bonus: Notice that your `wget` loop creates a lot of duplicate files on your jum
 -  Find a way to run the `wget` command without generating these extra files.
 		
 	- Look up the flag options for `wget` and find the flag that lets you choose a location to save the file it downloads. 
+
           wget -P or--directory-prefix 
 		
 	- Save that file to the Linux directory known as the "void" or the directory that doesn't save anything.
+
           wget -P 10.0.0.6 > /dev/null 
 
 Bonus: Write a nested loop that sends your `wget` command to all three (mine 2 VMs) of your web VMs over and over.
            azdmin@JumpBoxProvisioner:~$ while true; do wget sysadmin@10.0.0.6 10.0.0.7; done
+
+
 
 
 ---
