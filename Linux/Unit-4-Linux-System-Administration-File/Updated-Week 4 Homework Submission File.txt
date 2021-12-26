@@ -1,0 +1,280 @@
+## Week 4 Homework Submission File: Linux Systems Administration
+
+### Step 1: Ensure/Double Check Permissions on Sensitive Files
+
+1. Permissions on `/etc/shadow` should allow only `root` read and write access.
+
+    - Command to inspect permissions: sysadmin@UbuntuDesktop:/$ ls -l /etc/shadow
+                                      -rw-r----- 1 root shadow 2888 May 14 16:31 /etc/shadow
+
+    - Command to set permissions (if needed):sysadmin@UbuntuDesktop:/etc$ sudo chmod 600(octal notation) shadow
+                                             sysadmin@UbuntuDesktop:/etc$ ls -l /etc/shadow
+                                             -rw------- 1 root shadow 2888 May 14 16:31 /etc/shadow
+
+
+
+2. Permissions on `/etc/gshadow` should allow only `root` read and write access.
+
+    - Command to inspect permissions: sysadmin@UbuntuDesktop:/$ ls -l /etc/gshadow
+                                      -rw-r----- 1 root shadow 1076 May 14 16:31 /etc/gshadow
+
+    - Command to set permissions (if needed): sysadmin@UbuntuDesktop:/etc$ sudo chmod 600(octal notation) gshadow
+                                              sysadmin@UbuntuDesktop:/etc$ ls -l /etc/gshadow
+                                              -rw------- 1 root shadow 1076 May 14 16:31 /etc/gshadow
+
+
+3. Permissions on `/etc/group` should allow `root` read and write access, and allow everyone else read access only.
+
+    - Command to inspect permissions:sysadmin@UbuntuDesktop:/etc$ ls -l /etc/group
+                                     -rw-r--r-- 1 root root 1303 May 14 16:31 /etc/group
+
+
+    - Command to set permissions (if needed):sysadmin@UbuntuDesktop:/etc$ sudo chmod 644(octal notation) group
+                                             sysadmin@UbuntuDesktop:/etc$ ls -l /etc/group
+                                             -rw-r--r-- 1 root root 1303 May 14 16:31 /etc/group
+
+
+4. Permissions on `/etc/passwd` should allow `root` read and write access, and allow everyone else read access only.
+
+    - Command to inspect permissions: sysadmin@UbuntuDesktop:/etc$ ls -l /etc/passwd
+                                      -rw-r--r-- 1 root root 3214 May 14 16:31 /etc/passwd
+
+
+    - Command to set permissions (if needed): sysadmin@UbuntuDesktop:/etc$ sudo chmod 644(octal notation) passwd
+                                              sysadmin@UbuntuDesktop:/etc$ ls -l /etc/passwd
+                                              -rw-r--r-- 1 root root 3214 May 14 16:31 /etc/passwd
+
+
+### Step 2: Create User Accounts
+
+1. Add user accounts for `sam`, `joe`, `amy`, `sara`, and `admin`.
+
+    - Command to add each user account (include all five users):
+Check if users exist :
+sysadmin@UbuntuDesktop:/$ cat etc/passwd | grep sam 
+sysadmin@UbuntuDesktop:/$ cat etc/passwd | grep joe
+sysadmin@UbuntuDesktop:/$ cat etc/passwd | grep amy
+sysadmin@UbuntuDesktop:/$ cat etc/passwd | grep sara
+sysadmin@UbuntuDesktop:/$ cat etc/passwd | grep admin
+
+Create user accounts
+sysadmin@UbuntuDesktop:/$ sudo adduser sam
+[sudo] password for sysadmin: 
+Adding user `sam' ...
+Adding new group `sam' (1014) ...
+Adding new user `sam' (1012) with group `sam' ...
+Creating home directory `/home/sam' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Changing the user information for sam
+Enter the new value, or press ENTER for the default
+	Full Name []: Sam
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] y
+--------------------------------------------------------
+sysadmin@UbuntuDesktop:/$ sudo adduser joe
+Adding user `joe' ...
+Adding new group `joe' (1015) ...
+Adding new user `joe' (1013) with group `joe' ...
+Creating home directory `/home/joe' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Changing the user information for joe
+Enter the new value, or press ENTER for the default
+	Full Name []: Joe
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] y
+-------------------------------------------------------
+sysadmin@UbuntuDesktop:/$ sudo adduser amy
+Adding user `amy' ...
+Adding new group `amy' (1016) ...
+Adding new user `amy' (1014) with group `amy' ...
+Creating home directory `/home/amy' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Changing the user information for amy
+Enter the new value, or press ENTER for the default
+	Full Name []: Amy
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] y
+------------------------------------------------------
+sysadmin@UbuntuDesktop:/$ sudo adduser sara
+Adding user `sara' ...
+Adding new group `sara' (1017) ...
+Adding new user `sara' (1015) with group `sara' ...
+Creating home directory `/home/sara' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Changing the user information for sara
+Enter the new value, or press ENTER for the default
+	Full Name []: Sara
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] y
+------------------------------------------------------
+sysadmin@UbuntuDesktop:/$ sudo adduser admin
+Adding user `admin' ...
+Adding new group `admin' (1018) ...
+Adding new user `admin' (1016) with group `admin' ...
+Creating home directory `/home/admin' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Changing the user information for admin
+Enter the new value, or press ENTER for the default
+	Full Name []: Admin
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] y
+
+Check for users in etc/passwd
+sysadmin@UbuntuDesktop:/$ cat /etc/passwd
+sam:x:1012:1014:Sam,,,:/home/sam:/bin/bash
+joe:x:1013:1015:Joe,,,:/home/joe:/bin/bash
+amy:x:1014:1016:Amy,,,:/home/amy:/bin/bash
+sara:x:1015:1017:Sara,,,:/home/sara:/bin/bash
+admin:x:1016:1018:Admin,,,:/home/admin:/bin/bash
+
+Home Directory created for users
+sysadmin@UbuntuDesktop:/$ ls home
+adam  admin  amy  billy  http  instructor  jack  jane  joe  john  max  sally  sam  sara  student  sysadmin  user.hashes  vagrant
+
+Check for users in etc/shadow
+sam:$6$q6Q/VuiX$5xdspGUcvZy3Y4ARKik65sbwtu5FbX8C3gncFVR4hKJwd34H16C8nlHZEFTqccyvo0TFcNnwsAhQlyKfBBbQx.:18913:0:99999:7:::
+joe:$6$253k55JW$YDTk4wc7f2VK7By9IZQpij5B6r7U.GMXFG3JYeYNPw7ozzSAAAoSQfdak4a7erDRq/f512oTx5IMXbFHErmjB/:18913:0:99999:7:::
+amy:$6$WePTUnzc$b8kqwH4SZlAVwn/OoQExwNfmjCIDSe9GQIHcNBiiFXv6xLbc4.aaZ/wykpVk8c/4hctHvpvbKSMxjwXQgM4ON0:18913:0:99999:7:::
+sara:$6$4T1Dgup/$0loVpEjYiG0bMjagZDub6SJ1VRV3LMYv7UgSDzB1MCL2uK9k.ZYlb/eUxuKst/m6h3a1chh/PVqiTisOGsxeN1:18913:0:99999:7:::
+admin:$6$0jocPFlV$orCILl3u5xkr7vWT9TdpMzXVZnRXKHosD1GFC5Hu/QJK1vvBTQRUy5KFbbckWEPFaVnMulobUEqUJNhCsdHZy0:18913:0:99999:7:::
+
+Tested Hash for sam 
+sysadmin@UbuntuDesktop:/$ mkpasswd -m sha-512 -S q6Q/VuiX(salt) **********(password for sam).
+$6$q6Q/VuiX$5xdspGUcvZy3Y4ARKik65sbwtu5FbX8C3gncFVR4hKJwd34H16C8nlHZEFTqccyvo0TFcNnwsAhQlyKfBBbQx. (same as above in etc/shadow)
+PAM checks etc/shadow to verify if the password is the same and let sam log in.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+2. Ensure that only the `admin` has general sudo access.
+
+    - Command to add `admin` to the `sudo` group: sysadmin@UbuntuDesktop:/$ sudo usermod -aG sudo admin
+                                                  [sudo] password for sysadmin: 
+                                                  sysadmin@UbuntuDesktop:/$ groups admin
+                                                  admin : admin sudo
+                                                   
+                                                  Ensure only admin has general sudo access.
+                                                  sysadmin@UbuntuDesktop:/$ members sudo
+                                                  sysadmin instructor student jack admin
+
+                                                  sysadmin@UbuntuDesktop:/$ groups sam
+                                                  sam : sam
+                                                  sysadmin@UbuntuDesktop:/$ groups joe
+                                                  joe : joe
+                                                  sysadmin@UbuntuDesktop:/$ groups amy
+                                                  amy : amy
+                                                  sysadmin@UbuntuDesktop:/$ groups sara
+                                                  sara : sara
+
+
+
+### Step 3: Create User Group and Collaborative Folder
+
+1. Add an `engineers` group to the system.
+
+    - Command to add group: sysadmin@UbuntuDesktop:/$ sudo addgroup engineers
+                            [sudo] password for sysadmin: 
+                            Adding group `engineers' (GID 1019) ...
+                            Done.
+
+                            Check to verify engineers in group
+                            sysadmin@UbuntuDesktop:/$ cat etc/group | grep engineers
+                            engineers:x:1019:
+
+2. Add users `sam`, `joe`, `amy`, and `sara` to the managed group.
+
+    - Command to add users to `engineers` group (include all four users):
+
+      sysadmin@UbuntuDesktop:/$ sudo usermod -aG engineers sam
+      sysadmin@UbuntuDesktop:/$ groups sam
+      sam : sam engineers
+
+      sysadmin@UbuntuDesktop:/$ sudo usermod -aG engineers joe
+      sysadmin@UbuntuDesktop:/$ groups joe
+      joe : joe engineers
+
+      sysadmin@UbuntuDesktop:/$ sudo usermod -aG engineers amy
+      sysadmin@UbuntuDesktop:/$ groups amy
+      amy : amy engineers
+
+      sysadmin@UbuntuDesktop:/$ sudo usermod -aG engineers sara
+      sysadmin@UbuntuDesktop:/$ groups sara
+      sara : sara engineers
+
+      Validate members in engineers group      
+      sysadmin@UbuntuDesktop:/$ members engineers
+      sam joe amy sara
+
+3. Create a shared folder for this group at `/home/engineers`.
+
+    - Command to create the shared folder: sysadmin@UbuntuDesktop:/home$ sudo mkdir engineers
+                                           sysadmin@UbuntuDesktop:/home$ ls -l | grep engineers
+                                           drwxr-xr-x  2 root       root       4096 Oct 13 13:35 engineers                             
+
+4. Change ownership on the new engineers' shared folder to the `engineers` group.
+
+    - Command to change ownership of engineer's shared folder to engineer group: sysadmin@UbuntuDesktop:/home$ sudo chgrp engineers engineers 
+
+### Step 4: Lynis Auditing
+
+1. Command to install Lynis: sysadmin@UbuntuDesktop:~$ which lynis
+                             /usr/sbin/lynis (already installed).
+                             To install : sudo apt install lynis
+
+2. Command to see documentation and instructions: sysadmin@UbuntuDesktop:/etc/lynis$ man lynis; --help
+From "man" lynis :    
+DOCUMENTATION
+       Supporting documentation can be found via https://cisofy.com/support/
+                                             
+
+3. Command to run an audit: sysadmin@UbuntuDesktop:/etc/lynis$ sudo lynis audit system
+
+4. Provide a report from the Lynis output on what can be done to harden the system.
+
+    - Screenshot of report output:⁯ Attached in the folder is the Lynis report output. The section "suggestions" mentioned about hardenning.
+
+
+### Bonus
+1. Command to install chkrootkit:sysadmin@UbuntuDesktop:/$ which chkrootkit
+                                 /usr/sbin/chkrootkit (already installed)
+                                 To install : sudo apt install chkrootkit
+
+2. Command to see documentation and instructions: man chkrootkit; --help
+
+3. Command to run expert mode:sysadmin@UbuntuDesktop:/etc$ sudo chkrootkit -x (-x man or help instructs how to use expert mode) 
+
+4. Provide a report from the chkrootkit output on what can be done to harden the system.
+    - Screenshot of end of sample output: Attached in the folder is the chkrootkit report output.
+
+
+---
+© 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
