@@ -47,7 +47,7 @@ Before we begin generating traffic, locate the two screens inside Kibana that yo
 - Logs
 - Metrics
 
-    ![](Images/Metrics-Logs.png)
+![](Images/Kibana/Metrics-Logs.png)
 
 These pages will show you the changes in data that we will create.
 
@@ -55,11 +55,11 @@ These pages will show you the changes in data that we will create.
 
 - Click **Logs** to see some general system logs coming from the web machines.
 
-    ![](Images/Logs-General.png)
+![](Images/Kibana/Logs-General.png)
 
 - Notice that you can stream logs live from the machines. 
 
-    ![](Images/Stream-Live.png)
+![](Images/Kibana/Stream-Live.png)
 
 #### Metrics
 
@@ -71,11 +71,11 @@ These pages will show you the changes in data that we will create.
 
 - Choose **View metrics** from the dropdown that appears.
 
-    ![](Images/Metric-VM-Dropdown.png)
+![](Images/Kibana/Metric-VM-Dropdown.png)
 
 - Notice that you can see CPU and memory usage here.
 
-    ![](Images/Host-Overview.png)
+![](Images/Kibana/Host-Overview.png)
 
 Now that we know where to look for this data, let's generate some unusual network traffic.
 
@@ -131,7 +131,7 @@ We can easily do this by trying to SSH to a web machine from our jump box direct
             sysadmin@JumpBoxProvisioner:~$ while true; do ssh sysadmin@10.0.0.6; done
 
 3. Search through the logs in Kibana to locate your generated failed login attempts.
-     ![](Images/Log-Auth.png)
+![](Images/Kibana/Log-Auth.png)
 
 
 **Bonus**: Create a nested loop that generates SSH login attempts across all three of your VM's.
@@ -183,8 +183,8 @@ Linux has a common, easy-to-use diagnostic program called `stress`. It is easy t
 5. View the Metrics page for that VM in Kibana.  What indicates that CPU usage increased?
 
 6. Run the `stress` program on all three (mine 2 VMs) of your VMs and take screenshots of the data generated on the Metrics page of Kibana.
-   ![](Images/web1-stress-cpu.PNG) 
-   ![](Images/web2-stress-cpu.PNG)                
+![](Images/Kibana/web1-stress-cpu.PNG) 
+![](Images/Kibana/web2-stress-cpu.PNG)                
 
   	- **Note:** The stress program will run until you quit with Ctrl+C.
 </details>
@@ -254,8 +254,8 @@ We can generate abnormal data to view by creating a DoS web attack. The command-
 5. Open the Metrics page for the web machine you attacked and answer the following questions:
 	
 	- Which of the VM metrics were affected the most from this traffic? Load and Network.
-          ![](Images/load-traffic.PNG)
-          ![](Images/traffic.PNG)
+![](Images/Kibana/load-traffic.PNG)
+![](Images/Kibana/traffic.PNG)
 
 **Bonus**: Notice that your `wget` loop creates a lot of duplicate files on your jump box.
 
