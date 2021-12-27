@@ -1,31 +1,27 @@
-Activity File: Exploring Kibana
+## Activity File: Exploring Kibana
 
-You are a DevOps professional and have set up monitoring for one of your web servers. You are collecting all sorts of web log data and it is your job to review the data regularly to make sure everything is running smoothly. 
+* You are a DevOps professional and have set up monitoring for one of your web servers. You are collecting all sorts of web log data and it is your job to review the data regularly to make sure everything is running smoothly. 
 
-Today, you notice something strange in the logs and you want to take a closer look.
+* Today, you notice something strange in the logs and you want to take a closer look.
 
-Your task: Explore the web server logs to see if there's anything unusual. Specifically, you will:
+* Your task: Explore the web server logs to see if there's anything unusual. Specifically, you will:
 
 :warning: **Heads Up**: These sample logs are specific to the time you view them. As such, your answers will be different from the answers provided in the solution file. 
 
 ---
 
-Instructions
+### Instructions
 
 1. Add the sample web log data to Kibana.
 
 Kibana Home Page.
 ![](Images/Kibana/kibana-home-page.png)
-
 Click on Load a data set and a Kibana dashboard under add sample data on the Kibana home page.
 ![](Images/Kibana/load-data-set.png)
-
 Click on view data in the Sample web logs.
 ![](Images/Kibana/view-data.png)
-
 Click Dashboard.
 ![](Images/Kibana/dashboard.png)
-
 Display Kibana Dashboard.
 ![](Images/Kabana/kibana-dashboard.png)
 
@@ -36,12 +32,11 @@ Display Kibana Dashboard.
 ![](Images/Kibana/unique-visitors.png)
 
     - In the last 24 hours, of the visitors from China, how many were using Mac OSX? 8
-![](Images/Kibana/mac-osx.png)
+![](Images/Kibana/mac-osx.PNG)
 
     - In the last 2 days, what percentage of visitors received 404 errors? How about 503 errors?
        error 404 error 6.7+0=6.7%; error 503 6.7+8.3= 15.0%. (Averaging between points on the graph).
 ![](Images/Kabana/404-503.png)
-
 ![](Images/Kibana/error-404-503.png)
 
     - In the last 7 days, what country produced the majority of the traffic on the website? China,
@@ -69,40 +64,32 @@ rpm--installation package originally developed for the Red Hat Linux operating s
 4. Filter the data by this event.
      - What is the timestamp for this event?
        Dec 16, 2021 @ 16:58:16.297
-
-![](Images/Kibana/time-stamp.png)
+![](Images/Kibana/time-stamp.PNG)
 
      - What kind of file was downloaded?
        gz file downloaded 
-
-![](Images/Kibana/file-downloaded.png)
+![](Images/Kibana/file-downloaded.PNG)
 
      - From what country did this activity originate? CN-China
-
-![](Images/Kibana/originate-country.png)
+![](Images/Kibana/originate-country.PNG)
 
      - What HTTP response codes were encountered by this visitor? HTTP 200
-
-![](Images/Kabana/http-response-codes.png)  
-
+![](Images/Kabana/http-response-codes.PNG)  
 ![](Images/Kibana/response-codes.png) 
 
 5. Switch to the Kibana Discover page to see more details about this activity.
      - What is the source IP address of this activity?
        Source ip 	1.145.31.121
-
 ![](Images/Kibana/source-ip.PNG) 
      
      - What are the geo coordinates of this activity?
        geo.coordinates	
        "lat": 28.28980556
        "lon": -81.43708333
-
-![](Images/Kibana/geo-coordinates.png) 
+![](Images/Kibana/geo-coordinates.PNG) 
 
      - What OS was the source machine running? Win 8
-
-       ![](Images/Kibana/source-os.png) 
+       ![](Images/Kibana/source-os.PNG) 
 
      - What is the full URL that was accessed?
        https://artifacts.elastic.co/downloads/kibana/kibana-6.3.2-linux-x86_64.tar.gz
@@ -110,7 +97,7 @@ rpm--installation package originally developed for the Red Hat Linux operating s
 
      - From what website did the visitor's traffic originate?
        http://www.elastic-elastic-elastic.com/success/aleksandr-serebro
-![](Images/Kibana/website-originate.png) 
+![](Images/Kibana/website-originate.PNG) 
 
 6. Finish your investigation with a short overview of your insights. 
 
@@ -123,7 +110,7 @@ rpm--installation package originally developed for the Red Hat Linux operating s
      - Is there anything that seems suspicious about this activity? None.
 
      - Is any of the traffic you inspected potentially outside of compliance guidelines?
-       Traffic seems to fall within the compliance guidelines.
+       Traffic seem to fall within the compliance guidelines.
 
 ---
 © 2020 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.  

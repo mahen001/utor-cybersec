@@ -1,13 +1,13 @@
-Activity File: Kibana Continued
+## Activity File: Kibana Continued
 
 - This week, you created the infrastructure behind a security information and event management system such as Kibana. Once that set up is complete, you will have finished the project. 
 
 - This optional activity tasks you with exploring more Kibana capabilities, some of which you will use in future projects.  
 
-- Note: In order to complete these activities, you will need to complete the optional Metricbeat configuration.
+- **Note**: In order to complete these activities, you will need to complete the optional Metricbeat configuration.
 
 
-Scenario 
+### Scenario 
 
 In this activity, you will suppose the role of a cloud architect that has been tasked with setting up an ELK server to gather logs for the Incident Response team.
 
@@ -40,66 +40,67 @@ That said, now that we have Kibana setup and gathering data from three web serve
 
 Before getting started, we'll have to complete some metrics and logs set up. 
 
-Setup: Kibana Metrics and Logs Orientation
+### Setup: Kibana Metrics and Logs Orientation
 
 Before we begin generating traffic, locate the two screens inside Kibana that you will use to visualize this traffic:
 
 - Logs
 - Metrics
 
-![](Images/Kibana/Metrics-Logs.png)
+    ![](Images/Metrics-Logs.png)
 
 These pages will show you the changes in data that we will create.
 
-Logs
+#### Logs
 
-- Click Logs to see some general system logs coming from the web machines.
+- Click **Logs** to see some general system logs coming from the web machines.
 
-![](Images/Kibana/Logs-General.png)
+    ![](Images/Logs-General.png)
 
 - Notice that you can stream logs live from the machines. 
 
-![](Images/Kibana/Stream-Live.png)
+    ![](Images/Stream-Live.png)
 
-Metrics
+#### Metrics
 
-- Next, click Metrics on the left side. 
+- Next, click **Metrics** on the left side. 
 
     - Here we can see each of our VMs that are sending metrics.
 
 - Click on one of the large squares that represent one of your VMs.
 
-- Choose View metrics from the dropdown that appears.
+- Choose **View metrics** from the dropdown that appears.
 
-![](Images/Kibana/Metric-VM-Dropdown.png)
+    ![](Images/Metric-VM-Dropdown.png)
 
 - Notice that you can see CPU and memory usage here.
 
-![](Images/Kibana/Host-Overview.png)
+    ![](Images/Host-Overview.png)
 
 Now that we know where to look for this data, let's generate some unusual network traffic.
 
-Activity Tasks
+### Activity Tasks
 
 Expand the provided activity files to complete each task. These tasks can be completed in any order. 
 
-SSH Barrage
+#### SSH Barrage
 
 Task: Generate a high amount of failed SSH login attempts and verify that Kibana is picking up this activity.
 
-Activity File: SSH Barrage
+<details>
+<summary> Activity File: SSH Barrage </summary>
 
-Scenario
+#### Scenario
 
 - You are a cloud architect that has been tasked with setting up an ELK server to gather logs for the Incident Response team to use for training.
 
 - Before you hand over the server to the IR team, your senior architect has asked you to verify the ELK server is working as expected and pulling both logs and metrics from the pentesting web servers.
 
-Your Task: Generate a high amount of failed SSH login attempts and verify that Kibana is picking up this activity.
+**Your Task**: Generate a high amount of failed SSH login attempts and verify that Kibana is picking up this activity.
 
 ---
 
-Instructions
+#### Instructions
 
 One way we can generate logs of interest is to create some failed SSH logins on our servers.
 
@@ -130,22 +131,25 @@ We can easily do this by trying to SSH to a web machine from our jump box direct
             sysadmin@JumpBoxProvisioner:~$ while true; do ssh sysadmin@10.0.0.6; done
 
 3. Search through the logs in Kibana to locate your generated failed login attempts.
+     ![](Images/Log-Auth.png)
 
-![](Images/Kibana/Log-Auth.png)
+
+**Bonus**: Create a nested loop that generates SSH login attempts across all three of your VM's.
+           while true; do ssh sysadmin@10.0.0.6 10.0.0.7; done
 
 
-Bonus: Create a nested loop that generates SSH login attempts across all three of your VM's.
-       while true; do ssh sysadmin@10.0.0.6 10.0.0.7; done
+</details>
 
-Linux Stress
+#### Linux Stress
 
 Task: Generate a high amount of CPU usage on the pentesting machines and verify that Kibana picks up this data.
 
+<details>
 
-Activity File: Linux Stress 
+<summary> Activity File: Linux Stress </summary>
 
 
-Scenario
+#### Scenario
 
 - You are a cloud architect that has been tasked with setting up an ELK server to gather logs for the Incident Response team to use for training.
 
@@ -166,7 +170,7 @@ The Metrics page for a single VM shows the CPU usage for that machine. This show
 
 Linux has a common, easy-to-use diagnostic program called `stress`. It is easy to use and can be downloaded via `apt`.
 
-Instructions
+#### Instructions
 
 1. From your jump box, start up your Ansible container and attach to it.
 
@@ -179,22 +183,24 @@ Instructions
 5. View the Metrics page for that VM in Kibana.  What indicates that CPU usage increased?
 
 6. Run the `stress` program on all three (mine 2 VMs) of your VMs and take screenshots of the data generated on the Metrics page of Kibana.
-![](Images/Kibana/web1-stress-cpu.PNG) 
-![](Images/Kibana/web2-stress-cpu.PNG)                
+   ![](Images/web1-stress-cpu.PNG) 
+   ![](Images/web2-stress-cpu.PNG)                
 
-  	- Note:The stress program will run until you quit with Ctrl+C.
+  	- **Note:** The stress program will run until you quit with Ctrl+C.
+</details>
 
 
-wget-DoS
+#### wget-DoS
 
 
 Task: Generate a high amount of web requests to your pen-testing servers and make sure that Kibana is picking them up.
 
+<details>
 
-Activity File: wget-DoS
+<summary> Activity File: wget-DoS </summary>
 
 
-Scenario
+#### Scenario
 
 - You are a cloud architect that has been tasked with setting up an ELK server to gather logs for the Incident Response team to use for training.
 
@@ -248,37 +254,31 @@ We can generate abnormal data to view by creating a DoS web attack. The command-
 5. Open the Metrics page for the web machine you attacked and answer the following questions:
 	
 	- Which of the VM metrics were affected the most from this traffic? Load and Network.
-![](Images/Kibana/load-traffic.PNG)
-![](Images/Kibana/traffic.PNG)
+          ![](Images/load-traffic.PNG)
+          ![](Images/traffic.PNG)
 
-Bonus: Notice that your `wget` loop creates a lot of duplicate files on your jump box.
+**Bonus**: Notice that your `wget` loop creates a lot of duplicate files on your jump box.
 
 -  Write a command to delete _all_ of these files at once.
 
    azdmin@JumpBoxProvisioner:~$ ls
-
    index.html  index.html.1  index.html.2  index.html.3  index.html.4  index.html.5  index.html.6  index.html.7
-
    azdmin@JumpBoxProvisioner:~$ rm *
-
    azdmin@JumpBoxProvisioner:~$ ls
-
    azdmin@JumpBoxProvisioner:~$
 
 -  Find a way to run the `wget` command without generating these extra files.
 		
 	- Look up the flag options for `wget` and find the flag that lets you choose a location to save the file it downloads. 
-
           wget -P or--directory-prefix 
 		
 	- Save that file to the Linux directory known as the "void" or the directory that doesn't save anything.
-
           wget -P 10.0.0.6 > /dev/null 
 
-Bonus: Write a nested loop that sends your `wget` command to all three (mine 2 VMs) of your web VMs over and over.
+**Bonus**: Write a nested loop that sends your `wget` command to all three (mine 2 VMs) of your web VMs over and over.
            azdmin@JumpBoxProvisioner:~$ while true; do wget sysadmin@10.0.0.6 10.0.0.7; done
 
-
+</details>
 
 
 ---
