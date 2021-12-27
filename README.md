@@ -80,8 +80,7 @@ The playbook implements the following tasks:
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 ![](Images/docker_ps_output.png)
-![](Images/Web1_docker_ ps.PNG)
-![](Images/Web2_docker_ ps.PNG)
+
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -172,40 +171,37 @@ Using the configuration file template for filebeat and metricbeat to download th
 	   - name: start filebeat service
   	    command: service filebeat start
 ---
-   To run the filebeat playbook from the command line in the ansible directory : ansible-playbook /etc/ansible/files/filebeat-   playbook.yml
+   To run the filebeat playbook from the command line in the ansible directory : ansible-playbook /etc/ansible/files/filebeat-playbook.yml
 
 
--------Metricbeat-------
+-------Metricbeat-------                      
 
  nano metricbeat-playbook.yml
 
 ---
-  - name: installing and lunching metricbeat
-      hosts: webservers
-        become: true
-        tasks:
-    
-  -     name: download metricbeat deb
-          command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.7.1-amd64.deb
-    
-      - name: install metricbeat deb
-          command: sudo dpkg -i metricbeat-7.7.1-amd64.deb
-    
-      - name: drop in metricbeat.yml
-          copy:
-           src: /etc/ansible/roles/files/metricbeat-configuration.yml
-           dest: /etc/metricbeat/metricbeat.yml
-      
-   -    name: enable and configure system module
-          command: metricbeat modules enable system
-     
-   -    name: setup metricbeat
-          command: metricbeat setup
-     
-   -    name: start metricbeat service
-          command: service metricbeat start
-     
- ---
-   
-   To run the metricbeat playbook from the command line in the ansible directory: ansible-playbook /etc/ansible/files/metricbeat-         playbook.yml
+ - name: installing and launching filebeat
+	   hosts: webservers
+       become: true
+       tasks:
 
+	   - name: download metricbeat deb
+  	     command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.7.1-amd64.deb
+
+	   - name: install metricbeat deb
+  	     command: dpkg -i metricbeat-7.7.1-amd64.deb
+
+	   - name: drop in metricbeat.yml
+  	     copy:
+   	       src: ./files/metricbeat-configuration.yml
+   	       dest: /etc/metricbeat/filebeat.yml
+
+	   - name: enable and configure system module
+  	     command: metricbeat modules enable system
+
+	   - name: setup metricbeat
+  	     command: metricbeat setup
+
+	   - name: start metricbeat service
+  	    command: service metricbeat start
+---
+   To run the metricbeat playbook from the command line in the ansible directory : ansible-playbook /etc/ansible/files/metricbeat-playbook.yml
