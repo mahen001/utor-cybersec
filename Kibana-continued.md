@@ -262,9 +262,13 @@ We can generate abnormal data to view by creating a DoS web attack. The command-
 -  Write a command to delete _all_ of these files at once.
 
    azdmin@JumpBoxProvisioner:~$ ls
+
    index.html  index.html.1  index.html.2  index.html.3  index.html.4  index.html.5  index.html.6  index.html.7
+
    azdmin@JumpBoxProvisioner:~$ rm *
+
    azdmin@JumpBoxProvisioner:~$ ls
+
    azdmin@JumpBoxProvisioner:~$
 
 -  Find a way to run the `wget` command without generating these extra files.
