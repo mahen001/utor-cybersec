@@ -55,7 +55,7 @@ These pages will show you the changes in data that we will create.
 
 - Click **Logs** to see some general system logs coming from the web machines.
 
-    ![](Images/Kibana/Logs-General.png)
+    ![](Images/Kibana/Logs-General.PNG)
 
 - Notice that you can stream logs live from the machines. 
 
