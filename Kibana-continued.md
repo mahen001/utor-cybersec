@@ -71,11 +71,11 @@ These pages will show you the changes in data that we will create.
 
 - Choose **View metrics** from the dropdown that appears.
 
-    ![](Images/Kibana/Metric-VM-Dropdown.png)
+    ![](Images/Kibana/Metric-VM-Dropdown.PNG)
 
 - Notice that you can see CPU and memory usage here.
 
-    ![](Images/Kibana/Host-Overview.png)
+    ![](Images/Kibana/Host-Overview.PNG)
 
 Now that we know where to look for this data, let's generate some unusual network traffic.
 
