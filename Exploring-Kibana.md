@@ -28,7 +28,7 @@ Display Kibana Dashboard.
 
 2. Answer the following questions:
 
-    - In the last 7 days, how many unique visitors were located in India? 200.
+    - In the last 7 days, how many unique visitors were located in India? 226.
 ![](Images/Kibana/unique-visitors.png)
 
     - In the last 24 hours, of the visitors from China, how many were using Mac OSX? 8
