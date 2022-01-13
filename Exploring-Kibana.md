@@ -17,13 +17,13 @@
 Kibana Home Page.
 ![](Images/Kibana/kibana-home-page.png)
 Click on Load a data set and a Kibana dashboard under add sample data on the Kibana home page.
-![](Images/Kibana/load-data-set.png)
+![](Images/Kibana/load-data-set.PNG)
 Click on view data in the Sample web logs.
 ![](Images/Kibana/view-data.png)
 Click Dashboard.
 ![](Images/Kibana/dashboard.png)
 Display Kibana Dashboard.
-![](Images/Kibana/kibana-dashboard.png)
+![](Images/Kibana/kibana-dashboard.PNG)
 
 
 2. Answer the following questions:
@@ -67,41 +67,41 @@ rpm--installation package originally developed for the Red Hat Linux operating s
      - What is the timestamp for this event?
        Dec 16, 2021 @ 16:58:16.297
 
-![](Images/Kibana/time-stamp.png)
+![](Images/Kibana/time-stamp.PNG)
 
      - What kind of file was downloaded?
        gz file downloaded 
-![](Images/Kibana/file-downloaded.png)
+![](Images/Kibana/downloaded-file.png)
 
      - From what country did this activity originate? CN-China
 
-![](Images/Kibana/originate-country.png)
+![](Images/Kibana/originate-country.PNG)
 
      - What HTTP response codes were encountered by this visitor? HTTP 200
-![](Images/Kibana/http-response-codes.png)  
+![](Images/Kibana/http-response-codes.PNG)  
 ![](Images/Kibana/response-codes.png) 
 
 5. Switch to the Kibana Discover page to see more details about this activity.
      - What is the source IP address of this activity?
        Source ip 	1.145.31.121
-![](Images/Kibana/source-ip.png) 
+![](Images/Kibana/source-ip.PNG) 
      
      - What are the geo coordinates of this activity?
        geo.coordinates	
        "lat": 28.28980556
        "lon": -81.43708333
-![](Images/Kibana/geo-coordinates.png) 
+![](Images/Kibana/geo-coordinates.PNG) 
 
      - What OS was the source machine running? Win 8
-![](Images/Kibana/source-os.png) 
+![](Images/Kibana/source-os.PNG) 
 
      - What is the full URL that was accessed?
        https://artifacts.elastic.co/downloads/kibana/kibana-6.3.2-linux-x86_64.tar.gz
-![](Images/Kibana/url-assessed.png) 
+![](Images/Kibana/url-assessed.PNG) 
 
      - From what website did the visitor's traffic originate?
        http://www.elastic-elastic-elastic.com/success/aleksandr-serebro
-![](Images/Kibana/website-originate.png) 
+![](Images/Kibana/website-originate.PNG) 
 
 6. Finish your investigation with a short overview of your insights. 
 
